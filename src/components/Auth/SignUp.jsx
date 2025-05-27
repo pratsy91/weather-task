@@ -8,19 +8,28 @@ const SignUp = ({ onToggleForm }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [localError, setLocalError] = useState('');
   const dispatch = useDispatch();
   const loading = useSelector(selectAuthLoading);
   const error = useSelector(selectAuthError);
 
   useEffect(() => {
-    // Clear any existing errors when component mounts or unmounts
     return () => dispatch(clearError());
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLocalError('');
+    if (!username.trim() || !password || !confirmPassword) {
+      setLocalError('All fields are required.');
+      return;
+    }
+    if (password.length < 6) {
+      setLocalError('Password must be at least 6 characters.');
+      return;
+    }
     if (password !== confirmPassword) {
-      dispatch({ type: 'auth/setError', payload: 'Passwords do not match' });
+      setLocalError('Passwords do not match');
       return;
     }
     dispatch(signUp({ username, password }));
@@ -32,7 +41,7 @@ const SignUp = ({ onToggleForm }) => {
         <WiDayCloudy className={styles.icon} />
       </div>
       <h2 className={styles.title}>Sign Up</h2>
-      {error && <div className={styles.error}>{error}</div>}
+      {(localError || error) && <div className={styles.error}>{localError || error}</div>}
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputGroup}>
           <input
@@ -69,7 +78,7 @@ const SignUp = ({ onToggleForm }) => {
           disabled={loading}
           className={styles.button}
         >
-          {loading ? 'Creating Account...' : 'Sign Up'}
+          {loading ? <span className={styles.buttonLoader} /> : 'Sign Up'}
         </button>
       </form>
       <p className={styles.toggle}>

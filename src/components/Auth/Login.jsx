@@ -54,7 +54,7 @@ const Login = ({ onToggleForm }) => {
           disabled={loading}
           className={styles.button}
         >
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? <span className={styles.buttonLoader} /> : 'Login'}
         </button>
       </form>
       <p className={styles.toggle}>

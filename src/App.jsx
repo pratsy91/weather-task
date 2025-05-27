@@ -1,11 +1,13 @@
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import { WiDayCloudy } from 'react-icons/wi';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherContainer from './components/WeatherContainer/WeatherContainer';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import TemperatureToggle from './components/TemperatureToggle/TemperatureToggle';
 import AuthContainer from './components/Auth/AuthContainer';
+import Loader from './components/Loader/Loader';
 import { getWeatherByCity, getForecastByCity } from './services/weatherApi';
 import { selectUser, clearUser } from './store/slices/authSlice';
 import { authService } from './services/authService';
@@ -89,14 +91,17 @@ function WeatherDashboard() {
       ) : (
         <>
           <div className={styles.header}>
-            <h1 className={styles.title}>WeatherWatch</h1>
+            <div className={styles.headerRow}>
+              <WiDayCloudy className={styles.headerIcon} />
+              <h1 className={styles.title}>WeatherWatch</h1>
+            </div>
             <button onClick={handleSignOut} className={styles.signOutButton}>
               Sign Out
             </button>
           </div>
           <SearchBar onSearch={handleSearch} />
           <TemperatureToggle unit={unit} onToggle={handleUnitToggle} />
-          {isLoading && <div className={styles.loading}>Loading...</div>}
+          {isLoading && <Loader />}
           {hasError && (
             <ErrorMessage
               weatherError={weatherError}

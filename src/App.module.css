@@ -142,4 +142,16 @@
     width: 100%;
     max-width: 200px;
   }
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.headerIcon {
+  font-size: 4.5rem;
+  color: white;
+  padding-top: 1rem;
 } 
