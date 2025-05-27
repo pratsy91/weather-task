@@ -1,0 +1,91 @@
+.forecastContainer {
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.forecastTitle {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.forecastGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  flex: 1;
+}
+
+.forecastCard {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.forecastCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.forecastDate {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.forecastIcon {
+  width: 64px;
+  height: 64px;
+  margin: 10px auto;
+}
+
+.forecastTemp {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.forecastDesc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.forecastDetails {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .forecastGrid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+  }
+  
+  .forecastCard {
+    padding: 12px;
+  }
+  
+  .forecastTitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+} 

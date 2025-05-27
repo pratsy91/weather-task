@@ -1,0 +1,114 @@
+.weatherCard {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  z-index: 1;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cityName {
+  font-size: 2.2rem;
+  color: white;
+  margin: 0 0 20px 0;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.weatherIcon {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.temperature {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 25px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 25px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.detailItem {
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.detailItem:hover {
+  transform: translateY(-2px);
+}
+
+.detailItem span {
+  display: block;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  
+  .mainInfo {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .temperature {
+    font-size: 3rem;
+  }
+  
+  .cityName {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .weatherCard {
+    margin-bottom: 0;
+  }
+} 

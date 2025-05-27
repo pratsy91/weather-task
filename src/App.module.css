@@ -1,0 +1,126 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, 
+    rgba(25, 118, 210, 0.85) 0%, 
+    rgba(13, 71, 161, 0.85) 100%
+  );
+  position: relative;
+  padding: 16px 0;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1200&q=80') center/cover;
+  opacity: 0.4;
+  filter: contrast(115%) brightness(110%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure all content is above the background */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 2.8rem;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.signOutButton {
+  background: linear-gradient(to bottom, 
+    #ffffff 0%,
+    #f2f2f2 20%,
+    #e6e6e6 50%,
+    #f2f2f2 80%,
+    #ffffff 100%
+  );
+  color: #2c3e50;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.signOutButton:hover {
+  background: linear-gradient(to bottom, 
+    #ffffff 0%,
+    #f7f7f7 20%,
+    #eeeeee 50%,
+    #f7f7f7 80%,
+    #ffffff 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.signOutButton:active {
+  transform: translateY(1px);
+  background: linear-gradient(to bottom, 
+    #f7f7f7 0%,
+    #eeeeee 20%,
+    #e6e6e6 50%,
+    #eeeeee 80%,
+    #f7f7f7 100%
+  );
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  font-size: 1.1rem;
+  color: white;
+  margin: 15px 0;
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .signOutButton {
+    width: 100%;
+    max-width: 200px;
+  }
+} 
