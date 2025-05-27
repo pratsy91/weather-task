@@ -75,12 +75,9 @@ yarn dev
 src/
 ├── components/         # Reusable UI components
 ├── context/           # React context providers
-├── hooks/             # Custom React hooks
-├── pages/             # Application pages/routes
 ├── services/          # API and external service integrations
 ├── store/             # Redux store configuration and slices
-├── styles/            # Global styles and theme
-└── utils/             # Helper functions and utilities
+└── supabase/            # Supabase Client
 ```
 
 ## Implementation Approach
