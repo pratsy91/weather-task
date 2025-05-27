@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   background: linear-gradient(135deg, 
-    rgba(25, 118, 210, 0.85) 0%, 
-    rgba(13, 71, 161, 0.85) 100%
+    rgba(71, 85, 105, 0.85) 0%,
+    rgba(51, 65, 85, 0.85) 100%
   );
   position: relative;
   padding: 16px 0;
@@ -48,7 +48,7 @@
   bottom: 0;
   background: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1200&q=80') center/cover;
   opacity: 0.4;
-  filter: contrast(115%) brightness(110%);
+  filter: contrast(110%) brightness(90%);
   z-index: 0;
   pointer-events: none;
 }
@@ -72,19 +72,17 @@
   font-size: 2.8rem;
   color: white;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 0;
 }
 
 .signOutButton {
-  background: linear-gradient(to bottom, 
-    #ffffff 0%,
-    #f2f2f2 20%,
-    #e6e6e6 50%,
-    #f2f2f2 80%,
-    #ffffff 100%
+  background: linear-gradient(165deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 240, 240, 0.9) 50%,
+    rgba(230, 230, 230, 0.85) 100%
   );
-  color: #2c3e50;
+  color: #334155;
   border: none;
   padding: 8px 16px;
   border-radius: 8px;
@@ -97,14 +95,12 @@
 }
 
 .signOutButton:hover {
-  background: linear-gradient(to bottom, 
-    #ffffff 0%,
-    #f7f7f7 20%,
-    #eeeeee 50%,
-    #f7f7f7 80%,
-    #ffffff 100%
-  );
   transform: translateY(-2px);
+  background: linear-gradient(165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(245, 245, 245, 0.95) 50%,
+    rgba(235, 235, 235, 0.9) 100%
+  );
   box-shadow: 
     0 4px 8px rgba(0, 0, 0, 0.15),
     inset 0 1px 2px rgba(255, 255, 255, 0.5);
@@ -112,12 +108,10 @@
 
 .signOutButton:active {
   transform: translateY(1px);
-  background: linear-gradient(to bottom, 
-    #f7f7f7 0%,
-    #eeeeee 20%,
-    #e6e6e6 50%,
-    #eeeeee 80%,
-    #f7f7f7 100%
+  background: linear-gradient(165deg,
+    rgba(240, 240, 240, 0.95) 0%,
+    rgba(230, 230, 230, 0.9) 50%,
+    rgba(220, 220, 220, 0.85) 100%
   );
   box-shadow: 
     0 1px 2px rgba(0, 0, 0, 0.1),

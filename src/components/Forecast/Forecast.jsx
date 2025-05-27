@@ -12,14 +12,20 @@ const Forecast = ({ forecastData, unit }) => {
         {forecastData.map((day, index) => (
           <div key={index} className={styles.forecastCard}>
             <div className={styles.forecastDate}>
-              {new Date(day.dt * 1000).toLocaleDateString('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric'
-              })}
+              <span>
+                {new Date(day.dt * 1000).toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </span>
+              <span>
+                {new Date(day.dt * 1000).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric'
+                })}
+              </span>
             </div>
             <img
-              src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`}
               alt={day.weather[0].description}
               className={styles.forecastIcon}
             />
@@ -28,10 +34,6 @@ const Forecast = ({ forecastData, unit }) => {
             </div>
             <div className={styles.forecastDesc}>
               {day.weather[0].description}
-            </div>
-            <div className={styles.forecastDetails}>
-              <span>H: {Math.round(day.main.temp_max)}{unitSymbol}</span>
-              <span>L: {Math.round(day.main.temp_min)}{unitSymbol}</span>
             </div>
           </div>
         ))}

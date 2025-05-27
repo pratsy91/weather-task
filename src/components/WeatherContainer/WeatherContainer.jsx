@@ -7,12 +7,8 @@ const WeatherContainer = ({ weatherData, forecastData, unit }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.currentWeather}>
-        <WeatherDisplay weatherData={weatherData} unit={unit} />
-      </div>
-      <div className={styles.forecast}>
-        <Forecast forecastData={forecastData} unit={unit} />
-      </div>
+      <WeatherDisplay weatherData={weatherData} unit={unit} />
+      <Forecast forecastData={forecastData} unit={unit} />
     </div>
   );
 };

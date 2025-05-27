@@ -89,7 +89,7 @@ function WeatherDashboard() {
       ) : (
         <>
           <div className={styles.header}>
-            <h1 className={styles.title}>Weather Dashboard</h1>
+            <h1 className={styles.title}>WeatherWatch</h1>
             <button onClick={handleSignOut} className={styles.signOutButton}>
               Sign Out
             </button>

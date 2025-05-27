@@ -1,35 +1,106 @@
 .container {
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(300px, 2fr);
-  gap: 30px;
-  width: calc(100% - 40px);
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  gap: 40px;
   position: relative;
-  z-index: 1;
 }
 
-.currentWeather, .forecast {
-  width: 100%;
+.container > *:first-child {
+  flex: 1;
+  padding-right: 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.currentWeather {
-  display: flex;
-  flex-direction: column;
-}
-
-.forecast {
-  display: flex;
-  flex-direction: column;
+.container > *:last-child {
+  flex: 1.2;
 }
 
 @media (max-width: 1024px) {
   .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .container > *:first-child {
+    padding-right: 0;
+    padding-bottom: 30px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+.leftPanel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.1),
+    0 1px 2px 0 rgba(255, 255, 255, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leftPanel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.rightPanel {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+.rightPanel > * {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 25px;
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rightPanel > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 10px;
+    width: calc(100% - 20px);
+    padding: 10px;
+  }
+
+  .leftPanel {
+    padding: 25px;
+    min-height: 400px;
+  }
+
+  .rightPanel {
     grid-template-columns: 1fr;
-    max-width: 800px;
   }
 } 
