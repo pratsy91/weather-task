@@ -1,6 +1,6 @@
 .forecastContainer {
   flex: 2;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   padding: 30px;
@@ -88,11 +88,12 @@
 @media (max-width: 768px) {
   .forecastContainer {
     padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .forecastGrid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
+    gap: 15px;
   }
 
   .forecastCard {
@@ -100,13 +101,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 12px;
     padding: 20px;
     gap: 10px;
     width: 100%;
     box-sizing: border-box;
     min-height: 180px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .forecastCard:not(:last-child)::after {
@@ -120,6 +123,8 @@
     flex-direction: row;
     justify-content: center;
     gap: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .forecastDate span {
@@ -147,15 +152,17 @@
 @media (max-width: 480px) {
   .forecastContainer {
     padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .forecastGrid {
-    gap: 10px;
+    gap: 12px;
   }
 
   .forecastCard {
     padding: 15px;
     min-height: 160px;
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .forecastDate span {
@@ -179,16 +186,18 @@
 @media (max-width: 360px) {
   .forecastContainer {
     padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .forecastGrid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 10px;
   }
 
   .forecastCard {
     padding: 12px;
     min-height: 140px;
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .forecastDate span {
