@@ -1,6 +1,6 @@
 .forecastContainer {
   flex: 2;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   padding: 30px;
