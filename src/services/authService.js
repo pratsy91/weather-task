@@ -60,14 +60,24 @@ export const authService = {
   },
 
   updateLastCity: async (userId, city) => {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('users')
       .update({ last_city: city })
-      .eq('id', userId);
+      .eq('id', userId)
+      .select('id, username, last_city, last_unit')
+      .single();
 
     if (error) {
       console.error('Error updating last city:', error);
+      throw error;
     }
+
+    // Update localStorage with the new user data
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+    const updatedUser = { ...currentUser, last_city: city };
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+
+    return data;
   },
 
   updateLastUnit: async (userId, unit) => {

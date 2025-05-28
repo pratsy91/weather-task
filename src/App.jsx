@@ -63,7 +63,13 @@ function WeatherDashboard() {
   const handleSearch = async (searchCity) => {
     setCity(searchCity);
     if (user?.id) {
-      await authService.updateLastCity(user.id, searchCity);
+      try {
+        const updatedUser = await authService.updateLastCity(user.id, searchCity);
+        // Update Redux store with the new user data
+        dispatch({ type: 'auth/signIn/fulfilled', payload: updatedUser });
+      } catch (error) {
+        console.error('Error updating last city:', error);
+      }
     }
   };
 

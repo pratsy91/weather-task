@@ -7,7 +7,7 @@
 }
 
 .weatherMain {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 25px;
@@ -94,7 +94,7 @@
 }
 
 .detailItem {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
   padding: 15px;
   border-radius: 15px;
   display: flex;
