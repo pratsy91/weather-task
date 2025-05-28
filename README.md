@@ -74,7 +74,6 @@ yarn dev
 ```
 src/
 ├── components/         # Reusable UI components
-├── context/           # React context providers
 ├── services/          # API and external service integrations
 ├── store/             # Redux store configuration and slices
 └── supabase/            # Supabase Client
