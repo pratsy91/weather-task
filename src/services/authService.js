@@ -81,13 +81,27 @@ export const authService = {
   },
 
   updateLastUnit: async (userId, unit) => {
-    const { error } = await supabase
-      .from('users')
-      .update({ last_unit: unit })
-      .eq('id', userId);
+    try {
+      const { data, error } = await supabase
+        .from('users')
+        .update({ last_unit: unit })
+        .eq('id', userId)
+        .select('id, username, last_city, last_unit')
+        .single();
 
-    if (error) {
+      if (error) {
+        throw error;
+      }
+
+      // Update localStorage with the new user data
+      const currentUser = JSON.parse(localStorage.getItem('user'));
+      const updatedUser = { ...currentUser, last_unit: unit };
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      return data;
+    } catch (error) {
       console.error('Error updating last unit:', error);
+      throw new Error('Failed to update temperature unit. Please try again.');
     }
   }
 }; 

@@ -25,7 +25,6 @@ export const signIn = createAsyncThunk(
   async ({ username, password }, { rejectWithValue }) => {
     try {
       const user = await authService.signIn(username, password);
-      // Save to localStorage
       localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (error) {
@@ -39,7 +38,6 @@ export const signUp = createAsyncThunk(
   async ({ username, password }, { rejectWithValue }) => {
     try {
       const user = await authService.signUp(username, password);
-      // Save to localStorage
       localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (error) {
@@ -55,7 +53,6 @@ const authSlice = createSlice({
     clearUser: (state) => {
       state.user = null;
       state.error = null;
-      // Clear from localStorage
       localStorage.removeItem('user');
     },
     clearError: (state) => {
@@ -64,7 +61,6 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Sign In
       .addCase(signIn.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -78,7 +74,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Sign Up
       .addCase(signUp.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -97,7 +92,6 @@ const authSlice = createSlice({
 
 export const { clearUser, clearError } = authSlice.actions;
 
-// Selectors
 export const selectUser = (state) => state.auth.user;
 export const selectAuthLoading = (state) => state.auth.loading;
 export const selectAuthError = (state) => state.auth.error;

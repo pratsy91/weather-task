@@ -17,6 +17,12 @@ export const getWeatherByCity = async (city, unit = 'metric') => {
     if (error?.response?.data?.message === "city not found") {
       throw new Error('City not found. Please check the spelling and try again.');
     }
+    if (!error.response) {
+      throw new Error('Network error. Please check your internet connection and try again.');
+    }
+    if (error.response.status === 429) {
+      throw new Error('Too many requests. Please try again later.');
+    }
     throw new Error('Failed to fetch weather data. Please try again later.');
   }
 };
@@ -31,7 +37,6 @@ export const getForecastByCity = async (city, unit = 'metric') => {
       }
     });
     
-    // Process the forecast data to get one reading per day
     const dailyForecasts = response.data.list.reduce((acc, forecast) => {
       const date = new Date(forecast.dt * 1000).toLocaleDateString();
       if (!acc[date]) {
@@ -45,6 +50,12 @@ export const getForecastByCity = async (city, unit = 'metric') => {
     if (error?.response?.data?.message === "city not found") {
       throw new Error('City not found. Please check the spelling and try again.');
     }
-    throw new Error('Failed to fetch weather data. Please try again later.');
+    if (!error.response) {
+      throw new Error('Network error. Please check your internet connection and try again.');
+    }
+    if (error.response.status === 429) {
+      throw new Error('Too many requests. Please try again later.');
+    }
+    throw new Error('Failed to fetch forecast data. Please try again later.');
   }
 }; 

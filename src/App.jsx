@@ -18,15 +18,15 @@ import styles from './App.module.css';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // Disable refetch on window focus
-      retry: 1, // Only retry failed requests once
+      refetchOnWindowFocus: false,
+      retry: 1,
     },
   },
 });
 
 function WeatherDashboard() {
   const [city, setCity] = useState('');
-  const [unit, setUnit] = useState('metric'); // 'metric' for Celsius, 'imperial' for Fahrenheit
+  const [unit, setUnit] = useState('metric');
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   
@@ -56,7 +56,7 @@ function WeatherDashboard() {
     queryFn: () => getForecastByCity(city, unit),
     enabled: !!city,
     staleTime: 30000,
-    refetchInterval: 30000, // Refetch every 30 seconds
+    refetchInterval: 30000,
     refetchIntervalInBackground: false, 
   });
 
@@ -65,7 +65,6 @@ function WeatherDashboard() {
     if (user?.id) {
       try {
         const updatedUser = await authService.updateLastCity(user.id, searchCity);
-        // Update Redux store with the new user data
         dispatch({ type: 'auth/signIn/fulfilled', payload: updatedUser });
       } catch (error) {
         console.error('Error updating last city:', error);
@@ -76,7 +75,13 @@ function WeatherDashboard() {
   const handleUnitToggle = async (newUnit) => {
     setUnit(newUnit);
     if (user?.id) {
-      await authService.updateLastUnit(user.id, newUnit);
+      try {
+        const updatedUser = await authService.updateLastUnit(user.id, newUnit);
+        dispatch({ type: 'auth/signIn/fulfilled', payload: updatedUser });
+      } catch (error) {
+        console.error('Error updating unit:', error);
+        setUnit(unit);
+      }
     }
   };
 
