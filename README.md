@@ -92,14 +92,15 @@ The application follows a modular architecture with clear separation of concerns
    - Consistent styling patterns
 
 2. **State Management**
-   - Redux Toolkit for global state
-   - React Context for theme and auth state
+   - Redux Toolkit for global state management
+   - Redux store for user authentication and preferences
    - Local state for component-specific data
+   - React Query for server state management (weather data)
 
 3. **Authentication Flow**
-   - Protected routes using React Router
-   - Persistent sessions with Supabase
-   - Secure token management
+   - Redux-based authentication state
+   - Persistent sessions with localStorage
+   - Protected routes based on Redux auth state
 
 4. **Styling Strategy**
    - CSS Modules for component isolation
@@ -114,18 +115,20 @@ The application follows a modular architecture with clear separation of concerns
    - Immediate feedback on user actions
    - Smooth transitions between states
    - Consistent visual language
+   - Persistent user preferences (last city, temperature unit)
 
 2. **Performance**
-   - Lazy loading of routes
-   - Optimized re-renders
-   - Efficient state updates
-   - Cached weather data
+   - React Query for efficient data fetching and caching
+   - Optimized re-renders with Redux selectors
+   - Efficient state updates with Redux Toolkit
+   - Cached weather data with stale time configuration
 
 3. **Security**
    - Environment variables for sensitive data
    - Protected API endpoints
    - Secure authentication flow
    - Input validation
+   - Secure storage of user preferences
 
 ## Contributing
 
